@@ -49,6 +49,12 @@
                     "description": "Use semicolon at the end of the statements ",
                     "type": "boolean",
                     "default": true
+                },
+                "wrap-console-log-simple.useSingleQuotes": {
+                    "title": "use single quotes",
+                    "description": "Wraps the selected variable in single quotes (double if unchecked) ",
+                    "type": "boolean",
+                    "default": true
                 }
             }
         },

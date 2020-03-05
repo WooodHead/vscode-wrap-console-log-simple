@@ -67,14 +67,15 @@ function handle(target: Wrap, prefix?: boolean, type?: string) {
         lastLine: doc.lineCount - 1 == lineNumber,
       };
       const semicolon = getSetting('useSemicolon') ? ';' : ''
+      const quote = getSetting("useSingleQuotes") ? `'` : `"`
       if (type === 'nameValue') {
-        wrapData.txt = funcName + "('".concat(wrapData.item, "', ", wrapData.item, ')', semicolon);
+        wrapData.txt = `${funcName}(${quote}${wrapData.item}${quote}, ${wrapData.item})${semicolon}`
       } else if (type === 'arguments') {
-        wrapData.txt = funcName + "('".concat(wrapData.item, "', ", 'arguments', ')', semicolon);
+        wrapData.txt = `${funcName}(${quote}${wrapData.item}${quote}, arguments)${semicolon}`
       } else if (type === 'get') {
-        wrapData.txt = "const aaa = get(".concat(wrapData.item, ", '", 'aaa', "', '')", semicolon);
+        wrapData.txt = `const aaa = get(${quote}${wrapData.item}${quote}, ${quote}aaa${quote}, ${quote}${quote})${semicolon}`
       } else {
-        wrapData.txt = funcName + "('".concat(wrapData.item, "')", semicolon);
+        wrapData.txt = `${funcName}(${quote}${wrapData.item}${quote})${semicolon}`
       }
       resolve(wrapData);
     }
